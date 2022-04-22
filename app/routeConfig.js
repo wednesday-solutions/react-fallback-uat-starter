@@ -6,6 +6,10 @@ export const routeConfig = {
     component: HomeContainer,
     ...routeConstants.repos
   },
+  newHomePath: {
+    component: () => <h1>New Home Path</h1>,
+    ...routeConstants.newHomePath
+  },
   notFoundPage: {
     component: NotFound,
     route: '/'
