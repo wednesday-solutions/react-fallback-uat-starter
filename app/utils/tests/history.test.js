@@ -10,12 +10,13 @@ describe('Tests for baseUrl method in history', () => {
   afterAll(() => {
     process.env = OLD_ENV;
   });
-  it('should the path /react-template in production', () => {
-    process.env.NODE_ENV = 'production';
-    expect(baseUrl()).toEqual('/react-template');
+  it("should the path '' in development or test mode", () => {
+    expect(baseUrl()).toEqual('');
   });
 
-  it('should the path /react-template in development or test mode', () => {
-    expect(baseUrl()).toEqual('/');
+  it("should the path be 'process.env.BRANCH_NAME' if ENVIRONMENT_NAME is 'uat'", () => {
+    process.env.ENVIRONMENT_NAME = 'uat';
+    process.env.BRANCH_NAME = 'feat/example';
+    expect(baseUrl()).toEqual(`/${process.env.BRANCH_NAME}`);
   });
 });
