@@ -28,8 +28,8 @@ const theme = {
 
 export function App({ history, location }) {
   useEffect(() => {
-    if (location.search.includes('?redirect_uri=')) {
-      const routeToReplace = new URLSearchParams(location.search).get('redirect_uri');
+    const routeToReplace = new URLSearchParams(location.search).get('redirect_uri');
+    if (routeToReplace) {
       history.replace(routeToReplace);
     }
   }, []);
