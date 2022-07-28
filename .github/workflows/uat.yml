@@ -43,3 +43,10 @@ jobs:
         env:
           SOURCE_DIR: './build/'
           DEST_DIR: ${{ steps.vars.outputs.branch }}
+      - name: Deploy S3 fallback page
+        uses: jakejarvis/s3-sync-action@v0.5.0
+        with:
+          args: --acl public-read --follow-symlinks --exclude 'uat/tests/*' --exclude '.git/*'
+        env:
+          SOURCE_DIR: './uat/'
+          DEST_DIR: ''

@@ -10,6 +10,7 @@ describe('Tests for baseUrl method in history', () => {
   afterAll(() => {
     process.env = OLD_ENV;
   });
+
   it("should the path '' in development or test mode", () => {
     expect(baseUrl()).toEqual('');
   });
